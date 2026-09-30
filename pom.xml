@@ -8,6 +8,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <exec.mainClass>app.VpjG37</exec.mainClass>
+        <exec.mainClass>app.ContactForm</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.7.2</version>
+        </dependency>
+        <!-- следваща библиотека: още един <dependency> … </dependency> тук -->
+    </dependencies>
+    <name>Base</name>
 </project>

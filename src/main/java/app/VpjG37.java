@@ -4,13 +4,21 @@
 
 package app;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
 /**
  *
  * @author User
  */
 public class VpjG37 {
 
+    static void zad_1(){
+        System.out.printf("Аз съм %s, фн %s, уча %s", 
+                "Georgi P", "115757", "програмиране");
+    }
+    
     public static void main(String[] args) {
-        System.out.println("здраней!");
+        zad_1();
     }
 }
