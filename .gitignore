@@ -4,4 +4,3 @@ nb-configuration.xml
 *.class
 .idea/
 .DS_Store
-src/main/java/app/ContactForm.java
