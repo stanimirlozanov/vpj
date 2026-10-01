@@ -14,11 +14,15 @@ public class base {
      static void zad_1(){
         System.out.printf("Аз съм %s, фн %s, уча %s", 
                 "Georgi P", "115757", "програмиране");
+     }
+            static void zad_2(){
+        System.out.printf("Аз съм %s, фн %s, уча %s", 
+                "Georgi P", "115757", "програмиране");
     }
-  
-
+    
 
     public static void main(String[] args) {
         zad_1(); 
     }
+
 }
