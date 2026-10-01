@@ -13,13 +13,19 @@ public class ContactForm_2 extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ContactForm_2.class.getName());
 
     private boolean bOnlyReqFields = false;
+    
+    public ContactForm_2() {
+        initComponents();
+        setLocationRelativeTo(null);
+        cmbCountry.removeAllItems();
+        String[] countries = {"България","Германия","Франция","Канада"};
+        for(String c : countries){
+            cmbCountry.addItem(c);
     /**
      * Creates new form ContactForm_2
      */
-    public ContactForm_2() {
-        initComponents();
     }
-
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,11 +43,11 @@ public class ContactForm_2 extends javax.swing.JFrame {
         txtFirstName = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
-        txtCountry = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         btnSample = new javax.swing.JButton();
         lbStatus = new javax.swing.JLabel();
         pnlContact = new javax.swing.JPanel();
+        cmbCountry = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuContacts = new javax.swing.JMenu();
         miSplitName = new javax.swing.JMenuItem();
@@ -77,6 +83,8 @@ public class ContactForm_2 extends javax.swing.JFrame {
             pnlContactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mnuContacts.setText("Контакти");
 
@@ -125,11 +133,11 @@ public class ContactForm_2 extends javax.swing.JFrame {
                                 .addComponent(pnlContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtCountry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCity, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmail))
+                    .addComponent(txtEmail)
+                    .addComponent(cmbCountry, 0, 172, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -149,9 +157,7 @@ public class ContactForm_2 extends javax.swing.JFrame {
                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(106, 106, 106)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSample, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,7 +170,9 @@ public class ContactForm_2 extends javax.swing.JFrame {
                             .addComponent(lbCity)
                             .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(lbCountry)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCountry)
+                            .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,12 +210,14 @@ public class ContactForm_2 extends javax.swing.JFrame {
          if(bOnlyReqFields == false){
                lbCountry.setVisible(false);
             lbEmail.setVisible(false);
+             cmbCountry.setVisible(false);
             txtEmail.setVisible(false);
             miToggleFields.setText("Покажи незадължителните полета");
             bOnlyReqFields = true;
          }
             else {
               lbCountry.setVisible(true);
+               cmbCountry.setVisible(true);
             lbEmail.setVisible(true);
             txtEmail.setVisible(true);
             miToggleFields.setText("Покажи само задължителните полета");
@@ -243,6 +253,7 @@ public class ContactForm_2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSample;
+    private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbCity;
     private javax.swing.JLabel lbCountry;
@@ -256,7 +267,6 @@ public class ContactForm_2 extends javax.swing.JFrame {
     private javax.swing.JMenu mnuView;
     private javax.swing.JPanel pnlContact;
     private javax.swing.JTextField txtCity;
-    private javax.swing.JTextField txtCountry;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
