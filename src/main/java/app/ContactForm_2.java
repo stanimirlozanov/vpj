@@ -202,8 +202,12 @@ public class ContactForm_2 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLastNameActionPerformed
 
     private void btnSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSampleActionPerformed
-     txtFirstName.setText("sadasd");
-     txtLastName.setText("asdadsdsa");
+     txtFirstName.setText("Stanimir");
+     txtLastName.setText("Lozanov");
+     cmbCountry.setSelectedItem("Bulgaria");
+     txtEmail.setText("127950@students-ue.varna.bg");
+     txtCity.setText("varna");
+     
     }//GEN-LAST:event_btnSampleActionPerformed
 
     private void miToggleFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miToggleFieldsActionPerformed
