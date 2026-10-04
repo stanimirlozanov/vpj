@@ -44,9 +44,20 @@ public class base {
     }
     }
     }
+    static void zad_9(){
+         System.out.print("vuvedete chislo");
+         int n = reader.nextInt();
+         if(n%2== 0 ){
+                System.out.println("chetno");
+                
+         }else{
+               System.out.println("nechetno");
+         }
+         
+    }
        
     public static void main(String[] args) {
-            zad_3();
+            zad_9();
           
        }
 }
