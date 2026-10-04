@@ -55,9 +55,27 @@ public class base {
          }
          
     }
+    static void zad_8(){
+        System.out.print("Vavedete parvoto chislo: ");
+        int a = reader.nextInt();
+        
+        System.out.print("Vavedete vtoroto chislo: ");
+        int b = reader.nextInt();
+        
+        if (a > b) {
+            System.out.println("Po-goliamoto chislo e: " + a);
+            System.out.println("Razlikata e: " + (a - b));
+        } else if (b > a) {
+            System.out.println("Po-goliamoto chislo e: " + b);
+            System.out.println("Razlikata e: " + (b - a));
+        } else {
+            System.out.println("Chislata sa ravni.");
+            System.out.println("Razlikata e: 0");
+        }
+    }
        
     public static void main(String[] args) {
-            zad_9();
+            zad_8();
           
        }
 }
