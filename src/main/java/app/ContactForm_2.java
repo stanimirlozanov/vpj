@@ -4,6 +4,9 @@
  */
 package app;
 
+import javax.swing.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -14,18 +17,40 @@ public class ContactForm_2 extends javax.swing.JFrame {
 
     private boolean bOnlyReqFields = false;
     
+    private JLabel lblHint;
+    
+    private DefaultComboBoxModel<String> countries;
+    
     public ContactForm_2() {
         initComponents();
         setLocationRelativeTo(null);
         cmbCountry.removeAllItems();
-        String[] countries = {"България","Германия","Франция","Канада"};
-        for(String c : countries){
-            cmbCountry.addItem(c);
+        String[] arrCountries = {"България","Германия","Франция","Канада"};
+      //  for(String c : arrcountries){
+        //    cmbCountry.addItem(c);
+       //}
+          lblHint = new JLabel("Задължителни: име, фамилия, град");
+             pnlButtons.add(lblHint);
+             
+         countries = new DefaultComboBoxModel();
+         cmbCountry.setModel(countries);
+         for(String c : arrCountries){
+             countries.addElement(c);
+        }
+    }
+    
+       private void clearFields(){
+         txtFirstName.setText("");
+         txtLastName.setText("");
+         txtCity.setText("");
+         cmbCountry.setSelectedItem(0);
+         txtEmail.setText("");
+         lbStatus.setText("gotovo");
+    }
+    
     /**
      * Creates new form ContactForm_2
      */
-    }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,62 +60,93 @@ public class ContactForm_2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbFirstName = new javax.swing.JLabel();
-        lbLastName = new javax.swing.JLabel();
-        lbCity = new javax.swing.JLabel();
-        lbCountry = new javax.swing.JLabel();
-        lbEmail = new javax.swing.JLabel();
-        txtFirstName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtCity = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        btnSample = new javax.swing.JButton();
-        lbStatus = new javax.swing.JLabel();
         pnlContact = new javax.swing.JPanel();
+        pnlFields = new javax.swing.JPanel();
+        lbFirstName = new javax.swing.JLabel();
+        txtFirstName = new javax.swing.JTextField();
+        lbLastName = new javax.swing.JLabel();
+        txtLastName = new javax.swing.JTextField();
+        lbCity = new javax.swing.JLabel();
+        txtCity = new javax.swing.JTextField();
+        lbCountry = new javax.swing.JLabel();
         cmbCountry = new javax.swing.JComboBox<>();
+        lbEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        pnlButtons = new javax.swing.JPanel();
+        btnSample = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        lbStatus = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuContacts = new javax.swing.JMenu();
         miSplitName = new javax.swing.JMenuItem();
+        miCountries = new javax.swing.JMenuItem();
+        miRemoveCountry = new javax.swing.JMenuItem();
         mnuView = new javax.swing.JMenu();
         miToggleFields = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        pnlContact.setLayout(new java.awt.BorderLayout());
+
+        pnlFields.setPreferredSize(new java.awt.Dimension(150, 134));
+        pnlFields.setLayout(new java.awt.GridLayout(5, 2, 6, 6));
+
         lbFirstName.setText("име");
+        pnlFields.add(lbFirstName);
+        pnlFields.add(txtFirstName);
 
         lbLastName.setText("фамилия");
-
-        lbCity.setText("град");
-
-        lbCountry.setText("държава");
-
-        lbEmail.setText("имейл");
+        pnlFields.add(lbLastName);
 
         txtLastName.addActionListener(this::txtLastNameActionPerformed);
+        pnlFields.add(txtLastName);
+
+        lbCity.setText("град");
+        pnlFields.add(lbCity);
+        pnlFields.add(txtCity);
+
+        lbCountry.setText("държава");
+        pnlFields.add(lbCountry);
+
+        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlFields.add(cmbCountry);
+
+        lbEmail.setText("имейл");
+        pnlFields.add(lbEmail);
+        pnlFields.add(txtEmail);
+
+        pnlContact.add(pnlFields, java.awt.BorderLayout.PAGE_START);
+
+        pnlButtons.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         btnSample.setText("примерен");
         btnSample.addActionListener(this::btnSampleActionPerformed);
+        pnlButtons.add(btnSample);
+
+        btnClear.setText("изчисти");
+        btnClear.addActionListener(this::btnClearActionPerformed);
+        pnlButtons.add(btnClear);
+
+        pnlContact.add(pnlButtons, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(pnlContact, java.awt.BorderLayout.CENTER);
 
         lbStatus.setText("готово");
-
-        javax.swing.GroupLayout pnlContactLayout = new javax.swing.GroupLayout(pnlContact);
-        pnlContact.setLayout(pnlContactLayout);
-        pnlContactLayout.setHorizontalGroup(
-            pnlContactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pnlContactLayout.setVerticalGroup(
-            pnlContactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(lbStatus, java.awt.BorderLayout.SOUTH);
 
         mnuContacts.setText("Контакти");
 
         miSplitName.setText("разделяне");
         miSplitName.addActionListener(this::miSplitNameActionPerformed);
         mnuContacts.add(miSplitName);
+
+        miCountries.setText("Държави");
+        miCountries.addActionListener(this::miCountriesActionPerformed);
+        mnuContacts.add(miCountries);
+
+        miRemoveCountry.setText("изтриване");
+        miRemoveCountry.addActionListener(this::miRemoveCountryActionPerformed);
+        mnuContacts.add(miRemoveCountry);
 
         jMenuBar1.add(mnuContacts);
 
@@ -103,82 +159,6 @@ public class ContactForm_2 extends javax.swing.JFrame {
         jMenuBar1.add(mnuView);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lbStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbCity, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbCountry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(148, 148, 148))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(126, 126, 126))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbLastName)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCity, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmail)
-                    .addComponent(cmbCountry, 0, 172, Short.MAX_VALUE))
-                .addGap(67, 67, 67))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSample, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbLastName)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSample, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(lbStatus))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbCity)
-                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbCountry)
-                            .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(6, 6, 6))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,6 +210,24 @@ public class ContactForm_2 extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_miToggleFieldsActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearFields();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void miCountriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCountriesActionPerformed
+            String all =  "";
+            for(int i = 0 ; i <countries.getSize(); i++){
+                if(i !=0)
+                    all+= " ,";
+                all += countries.getElementAt(i);
+            }
+            lbStatus.setText("Durjavi (" + countries.getSize()+"):" + all);
+    }//GEN-LAST:event_miCountriesActionPerformed
+
+    private void miRemoveCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRemoveCountryActionPerformed
+       countries.removeElement(cmbCountry.getSelectedItem());
+    }//GEN-LAST:event_miRemoveCountryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +254,7 @@ public class ContactForm_2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSample;
     private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JMenuBar jMenuBar1;
@@ -265,11 +264,15 @@ public class ContactForm_2 extends javax.swing.JFrame {
     private javax.swing.JLabel lbFirstName;
     private javax.swing.JLabel lbLastName;
     private javax.swing.JLabel lbStatus;
+    private javax.swing.JMenuItem miCountries;
+    private javax.swing.JMenuItem miRemoveCountry;
     private javax.swing.JMenuItem miSplitName;
     private javax.swing.JMenuItem miToggleFields;
     private javax.swing.JMenu mnuContacts;
     private javax.swing.JMenu mnuView;
+    private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlContact;
+    private javax.swing.JPanel pnlFields;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
